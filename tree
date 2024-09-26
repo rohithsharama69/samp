@@ -1,0 +1,462 @@
+1---------------=================================================================
+
+<html>
+<body>
+<form method="post" action="rev1.php">
+<input type="number" name="n1" placeholder="Enter n1">
+<input type="number" name="n2" placeholder="Enter n2">
+<input type="submit">
+</form>
+</body>
+</html>
+
+<?php
+$n1=$_POST["n1"];
+$n2=$_POST["n2"];
+$temp=0;
+
+$temp=$n1;
+$n1=$n2;
+$n2=$temp;
+
+echo "n1:$n1";
+echo "n2:$n2";
+?>
+
+
+2---------------=================================================================
+
+<html>
+<body>
+
+<form method="post" action="rev2.php">
+<input type="number" name="n1" placeholder="Enter n1">
+<input type="submit">
+</form>
+
+</body>
+</html>
+
+<?php
+$n1=$_POST["n1"];
+$fact=1;
+
+for($i=$n1;$i>=1;$i--)
+{
+$fact=$fact*$i;
+}
+echo "Factorail of $n1 is:$fact";
+?>
+
+3---------------=================================================================
+
+
+<html>
+<body>
+
+<form method="post" action="rev3.php">
+<input type="number" name="n1" placeholder="Enter n1">
+<input type="submit">
+</form>
+
+</body>
+</html>
+
+<?php
+$num=$_POST["n1"];
+$rev=0;
+$sum=0;
+
+while($num>1)
+{
+$rem=$num%10;
+$sum=$sum+$rem;
+$rev=($rev*10)+$rem;
+$num=$num/10;
+}
+
+4---------------=================================================================
+
+<html>
+<body>
+
+<form method="post" action="rev4.php">
+<input type="number" name="n1" placeholder="Enter n1">
+<input type="submit">
+</form>
+
+</body>
+</html>
+
+echo "Sum:$sum";
+echo "Reverse:$rev";
+?>
+
+<?php
+function fib($n1)
+{
+if($n1<2)
+{
+return $n1;
+}
+return fib($n1-1)+fib($n1-2);
+}
+
+$n1=$_POST["n1"];
+echo "Fibonacci Series<br>";
+for($i=0;$i<$n1;$i++)
+{
+echo "fib($i)".fib($i)."<br>";
+}
+?>
+
+5---------------=================================================================
+
+<html>
+<body>
+
+<form method="post" action="rev5.php">
+<input type="text" name="n1" placeholder="Enter n1">
+<input type="submit">
+</form>
+
+</body>
+</html>
+
+<?php
+$name=$_POST["n1"];
+
+class car{
+private $name;
+function __construct($name)
+{
+$this->name=$name;
+echo "$this->name is created<br>";
+}
+function drive(){
+echo "$this->name is driving<br>";
+}
+function __destruct()
+{
+echo "$this->name is destroyed";
+}
+}
+$car1=new car($name);
+$car1->drive();
+?>
+
+8---------------=================================================================
+
+<html>
+<body>
+
+<form method="post" action="rev8.php">
+<input type="number" name="n1" placeholder="Enter n1">
+<input type="submit">
+</form>
+
+</body>
+</html>
+
+<?php
+$n1=$_POST["n1"];
+$flag=0;
+
+for($i=2;$i<=$n1/2;$i++)
+{
+if($n1%$i==0)
+{
+$flag=1;
+echo "not prime";
+break;
+}
+}
+if($flag==0)
+{
+echo "prime";
+}
+?>
+
+9---------------=================================================================
+
+<html>
+<body>
+
+<form method="post" action="rev9.php">
+<input type="text" name="string" placeholder="Enter n1">
+<input type="submit">
+</form>
+
+</body>
+</html>
+
+<?php
+$id=$_POST["string"];
+if(substr($id,0,9)=="U06PE21S0")
+{
+if(substr($id,9,3)<156)
+{
+echo "correct id";
+}
+else
+{
+echo "incorrect id";
+}
+}
+else
+{
+echo "re-enter";
+}
+?>
+
+10---------------=================================================================
+
+<html>
+<body>
+<form method="post" action="rev10.php">
+<table id="mat1">
+<h1>MATRIX1</h1>
+<tr>
+<td><input type="number" name="mat1[0][0]"></td>
+<td><input type="number" name="mat1[0][1]"></td>
+</tr>
+<tr>
+<td><input type="number" name="mat1[1][0]"></td>
+<td><input type="number" name="mat1[1][1]"></td>
+</tr>
+</table>
+
+<table id="mat2">
+<h1>MATRIX2</h1>
+<tr>
+<td><input type="number" name="mat2[0][0]"></td>
+<td><input type="number" name="mat2[0][1]"></td>
+</tr>
+<tr>
+<td><input type="number" name="mat2[1][0]"></td>
+<td><input type="number" name="mat2[1][1]"></td>
+</tr>
+</table>
+<input type="submit">
+</form>
+</body>
+</html>
+
+<?php
+
+$mat1=$_POST["mat1"];
+$mat2=$_POST["mat2"];
+$result=array();
+
+echo "Matric addition<br>";
+echo "<table border='1'>";
+for($i=0;$i<2;$i++)
+{
+echo "<tr>";
+for($j=0;$j<2;$j++)
+{
+$result[$i][$j]=$mat1[$i][$j]+$mat2[$i][$j];
+echo "<td>".$result[$i][$j]."</td>";
+}
+echo "</tr>";
+}
+echo "</table>";
+
+?>
+
+11---------------=================================================================
+
+<?php
+
+echo "Date and Time:".date("Y-m-d h:i:sa")."<br>";
+
+echo "Current day".date("l")."<br>";
+echo "Current Month".date("F")."<br>";
+echo "Current year".date("Y")."<br>";
+
+$sp=mktime(0,0,0,31,12,2028);
+echo "User defined date:".date("Y-m-d",$sp);
+?>
+
+12---------------=================================================================
+
+<html>
+<head><title>File Upload</title></head>
+<body>
+    <form action="" method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" value="Upload">
+    </form>
+
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_FILES["file"]["name"])) {
+        $target = "uploads/" . basename($_FILES["file"]["name"]);
+        if (move_uploaded_file($_FILES["file"]["tmp_name"], $target)) {
+            echo "File uploaded successfully.<br>";
+            $ext = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+            if ($ext == "txt") {
+                echo "<pre>" . htmlspecialchars(file_get_contents($target)) . "</pre>";
+            } elseif (in_array($ext, ["jpg", "jpeg", "png", "gif"])) {
+                echo "<img src='$target' height='200'>";
+            } else {
+                echo "Unsupported file type.";
+            }
+        } else {
+            echo "Error uploading file.";
+        }
+    }
+    ?>
+</body>
+</html>
+
+13---------------=================================================================
+
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "studentregistrationdatabase";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Create database
+$sql = "CREATE DATABASE IF NOT EXISTS $dbname";
+if ($conn->query($sql) === TRUE) {
+    echo "Database created successfully<br>";
+} else {
+    echo "Error creating database: " . $conn->error . "<br>";
+}
+
+// Select the database
+$conn->select_db($dbname);
+
+// Create table
+$sql = "CREATE TABLE IF NOT EXISTS studentdata2023 (
+    id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    usnno VARCHAR(25) NOT NULL,
+    studentname VARCHAR(50) NOT NULL,
+    phoneno BIGINT(12) NOT NULL,
+    course VARCHAR(25) NOT NULL,
+    firstlanguage VARCHAR(25),
+    secondlanguage VARCHAR(25),
+    file_name VARCHAR(255) NOT NULL,
+    uploaded_on DATETIME NOT NULL,
+    status TINYINT(1) DEFAULT 1
+)";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Table created successfully";
+} else {
+    echo "Error creating table: " . $conn->error;
+}
+
+$conn->close();
+?>
+
+14---------------=================================================================
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Application</title>
+</head>
+<body>
+
+<h1>Student Application</h1>
+
+<form action="studentregistration.php" method="post" class="container">
+    <input type="number" name="adharno" placeholder="Adhar No." min="100000000000" max="999999999999" required>
+    <input type="text" name="studentname" placeholder="Student Name" required>
+    <input type="number" name="contactno" placeholder="Phone No." min="6000000000" max="99999999999" required>
+    <select name="course" required>
+        <option value="BCA">BCA</option>
+        <option value="B.Sc.">B.Sc.</option>
+        <option value="B.Com.">B.Com.</option>
+        <option value="BBA">BBA</option>
+    </select>
+    <select name="secondlanguage" required>
+        <option value="KANNADA">KANNADA</option>
+        <option value="HINDI">HINDI</option>
+        <option value="SANSKRIT">SANSKRIT</option>
+    </select>
+    <input type="submit" name="submit" value="Submit">
+</form>
+
+</body>
+</html>
+
+
+
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "studentregistrationdatabase";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "CREATE TABLE IF NOT EXISTS studentdata2024 (
+    adharno BIGINT(12) NOT NULL,
+    studentname VARCHAR(50) NOT NULL,
+    phoneno BIGINT(12) NOT NULL,
+    course VARCHAR(25) NOT NULL,
+    firstlanguage VARCHAR(25),
+    secondlanguage VARCHAR(25),
+    uploaded_on DATETIME NOT NULL,
+    PRIMARY KEY (adharno)
+);";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Student registration table created successfully<br>";
+} else {
+    echo "<br>Error creating student registration table: " . $conn->error;
+}
+
+$conn->close();
+?>
+
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "studentregistrationdatabase";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+if(isset($_POST["submit"])) {
+
+    $adharno = $_POST["adharno"];
+    $studentname = $_POST["studentname"];
+    $contactno = (int) $_POST["contactno"];
+    $course = $_POST["course"];
+    $firstlanguage = "English";
+    $secondlanguage = $_POST["secondlanguage"];
+
+    // Insert student data into the database
+    $sql = "INSERT INTO studentdata2024 
+            (adharno, studentname, phoneno, course, firstlanguage, secondlanguage, uploaded_on) 
+            VALUES 
+            ('$adharno', '$studentname', '$contactno', '$course', '$firstlanguage', '$secondlanguage', NOW());";
+
+    if($conn->query($sql) === TRUE) {
+        echo "Student data inserted successfully";
+    } else {
+        echo "Student data insertion was not successful: " . $conn->error;
+    }
+}
+
+$conn->close();
+?>
