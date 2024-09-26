@@ -361,102 +361,120 @@ $conn->close();
 
 14---------------=================================================================
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Student Application</title>
-</head>
-<body>
-
-<h1>Student Application</h1>
-
-<form action="studentregistration.php" method="post" class="container">
-    <input type="number" name="adharno" placeholder="Adhar No." min="100000000000" max="999999999999" required>
-    <input type="text" name="studentname" placeholder="Student Name" required>
-    <input type="number" name="contactno" placeholder="Phone No." min="6000000000" max="99999999999" required>
-    <select name="course" required>
-        <option value="BCA">BCA</option>
-        <option value="B.Sc.">B.Sc.</option>
-        <option value="B.Com.">B.Com.</option>
-        <option value="BBA">BBA</option>
-    </select>
-    <select name="secondlanguage" required>
-        <option value="KANNADA">KANNADA</option>
-        <option value="HINDI">HINDI</option>
-        <option value="SANSKRIT">SANSKRIT</option>
-    </select>
-    <input type="submit" name="submit" value="Submit">
-</form>
-
-</body>
-</html>
-
-
-
 <?php
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "studentregistrationdatabase";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
+$dbname="studentregistrationdatabase";
+$conn = new mysqli($servername, $username, $password,$dbname);
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+die("Connection failed: " . $conn->connect_error);
 }
-
 $sql = "CREATE TABLE IF NOT EXISTS studentdata2024 (
-    adharno BIGINT(12) NOT NULL,
-    studentname VARCHAR(50) NOT NULL,
-    phoneno BIGINT(12) NOT NULL,
-    course VARCHAR(25) NOT NULL,
-    firstlanguage VARCHAR(25),
-    secondlanguage VARCHAR(25),
-    uploaded_on DATETIME NOT NULL,
-    PRIMARY KEY (adharno)
+adharno bigint(12) not null,
+studentname varchar(50) not null,
+phoneno bigint(12) not null,
+course varchar(25) not null,
+firstlanguage varchar(25),
+secondlanguage varchar(25),
+uploaded_on datetime NOT NULL,
+PRIMARY KEY (adharno )
 );";
-
 if ($conn->query($sql) === TRUE) {
-    echo "Student registration table created successfully<br>";
+echo "student registration Table created successfully<br>";
 } else {
-    echo "<br>Error creating student registration table: " . $conn->error;
+echo "<br>Error creating student registration table: " . $conn->error;
 }
-
 $conn->close();
 ?>
 
+
+-------------------------------------------------
+
+<!doctype html>
+<head>
+<title>Login</title>
+<style>
+/* Add styles to the form container */
+.container {
+position: absolute;
+center: 0;
+margin: 20px;
+max-width: 325px;
+background-color:white;
+padding: 20px;
+}
+/* Full-width input fields */
+input[type=text],input[type=number],input[type=submit],input[type=file],select,label{
+width: 100%;
+padding: 10px;
+margin: 5px 0 22px 0;
+border:none;
+background: #f1f1f1;
+}
+/* Set a style for the submit button */
+input[type=submit] {
+background-color: blue;
+color: white;
+padding: 16px 20px;
+width: 100%;
+}
+</style>
+</head>
+<body>
+<h1>Student Application</h1>
+<form action="studentregistration.php" method="post" class="container">
+<input type="number" name="adharno" " placeholder="Adhar No." min="100000000000"
+max="9999999999999" required>
+<input type="text" name="studentname" placeholder="Student Name" required>
+<input type="number" name="contactno" placeholder="Phone No." min="6000000000"
+max="99999999999" required>
+<select name="course" required>
+<option value="BCA">BCA</option>
+<option value="B. Sc.">B. Sc.</option>
+<option value="B.Com.">B.Com.</option>
+<option value="BBA">BBA</option>
+</select>
+<select name="secondlanguage" required>
+<option value="KANNADA">KANNADA</option>
+<option value="HINDI">HINDI</option>
+<option value="SANSKRIT">SANSKRIT</option>
+</select>
+<input type="submit" name="submit" value="submit">
+</form>
+</body>
+</html>
+
+-----------------------------------------------------
+
 <?php
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "studentregistrationdatabase";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
+$dbname="studentregistrationdatabase";
+$conn = new mysqli($servername, $username, $password,$dbname);
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+die("Connection failed: " . $conn->connect_error);
 }
-
-if(isset($_POST["submit"])) {
-
-    $adharno = $_POST["adharno"];
-    $studentname = $_POST["studentname"];
-    $contactno = (int) $_POST["contactno"];
-    $course = $_POST["course"];
-    $firstlanguage = "English";
-    $secondlanguage = $_POST["secondlanguage"];
-
-    // Insert student data into the database
-    $sql = "INSERT INTO studentdata2024 
-            (adharno, studentname, phoneno, course, firstlanguage, secondlanguage, uploaded_on) 
-            VALUES 
-            ('$adharno', '$studentname', '$contactno', '$course', '$firstlanguage', '$secondlanguage', NOW());";
-
-    if($conn->query($sql) === TRUE) {
-        echo "Student data inserted successfully";
-    } else {
-        echo "Student data insertion was not successful: " . $conn->error;
-    }
+if(isset($_POST["submit"])){
+$adharno=$_POST["adharno"];
+$studentname=$_POST["studentname"];
+$contactno=(int)($_POST["contactno"]);
+$course=$_POST["course"];
+$firstlanguage="English";
+$secondlanguage=$_POST["secondlanguage"];
+// Insert student data file name into database
+$sql = "INSERT INTO studentdata2024
+(adharno,studentname,phoneno,course,firstlanguage,
+secondlanguage,uploaded_on)
+VALUES
+('".$adharno."','".$studentname."','".$contactno."','".$course."','".$firstlanguage."',
+'".$secondlanguage."', NOW());";
+if($conn->query($sql)===TRUE)
+{
+echo "student data inserted successfully";
+}else{
+echo "student data insertion was not successfully"; }
 }
-
 $conn->close();
 ?>
